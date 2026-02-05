@@ -28,19 +28,44 @@ namespace GestioneCorsi.Library
             AulaAssegnata = aulaAssegnata;
         }
 
-        public string SchedaRiassuntiva(Lezione lezione)
+        public void SegnaPresenza(Studente studente)
         {
-            return $"Lezione: {Descrizione}\n" +
-            $"Data: {DataLezione} Ore: {OraInizioLezione}\n" +
-            $"Durata: {DurataLezione}\n" +
-            $"Docente: {Docente.Nome} {Docente.Cognome}\n" +
-            $"Aula: {AulaAssegnata.Nome} (Capienza: {AulaAssegnata.Capienza})\n"; //+
-           // $"Presenti: {NumeroPresenti}";
+            bool StudenteTrovato = false;
+            foreach (Studente s in StudentiPresenti)
+            {
+                if (s.Matricola == studente.Matricola)
+                {
+                    StudenteTrovato = true;
+                    break;
+                }
+            }
+
+            if (!StudenteTrovato)
+            {
+                StudentiPresenti.Add(studente);
+            }
+        }
+
+        public void SegnaAssenza(Studente studente)
+        {
+            for(int i = 0; i < StudentiPresenti.Count; i++)
+            {
+                if(StudentiPresenti[i].Matricola == studente.Matricola)
+                {
+                    StudentiPresenti.RemoveAt(i);
+                    break;
+                }
+            }
         }
 
         public override string ToString()
         {
-            return $"La lezione di {Descrizione} era il {DataLezione} alle {OraInizioLezione} e' durata {DurataLezione}, ed e' stata tenuta dal {Docente} nell'aula {AulaAssegnata}";
+            return $"Descrizione lezione: {Descrizione} " +
+                $"\nData lezione: {DataLezione} " +
+                $"\nOra di inizio della lezione: {OraInizioLezione} " +
+                $"\nDurata lezione: {DurataLezione} " +
+                $"\nDocente: {Docente} " +
+                $"\nAula: {AulaAssegnata}";
         }
     }
 }

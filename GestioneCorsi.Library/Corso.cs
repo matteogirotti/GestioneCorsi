@@ -30,24 +30,23 @@ namespace GestioneCorsi
             Studenti.Add(studente);
         }
 
-        /*public double MediaPresentiAlCorso()
+        public double MediaPresentiALezione()
         {
-            if(Lezioni.Count == 0)
+            int TotalePresenti = 0;
+            foreach (Lezione lezione in Lezioni)
             {
-                throw new Exception("Non c'e' ancora stata nessuna lezione.");
+                TotalePresenti += Lezioni.Count;
             }
-            int SommaPersonePresenti = 0;
-            foreach(Lezione lezione in Lezioni)
+            if (Lezioni.Count < 1)
             {
-                SommaPersonePresenti += lezione.NumeroPresenti;
+                return 0;
             }
-            double Media = (double)SommaPersonePresenti / (double)Lezioni.Count;
-            return Media;
-        }*/
+            return TotalePresenti / Lezioni.Count;
+        }
 
         public override string ToString()
         {
-            return $"Il corso {Nome} e' la {NumeroEdizione} edizione";
+            return $"Il noome del corso e' {Nome} e questa e' la {NumeroEdizione} edizione";
         }
     }
 }

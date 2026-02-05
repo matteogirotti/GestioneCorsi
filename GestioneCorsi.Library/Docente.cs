@@ -19,9 +19,10 @@ namespace GestioneCorsi.Library
             TitoloDiStudio = titoloDiStudio;
         }
 
+
         public override string ToString()
         {
-            return $"il docente si chiama {Nome} {Cognome} e il suo titolo di studio e' {TitoloDiStudio}";
+            return $"Il docente si chiama {Nome} {Cognome} e il suo titolo di studio e' {TitoloDiStudio}";
         }
     }
 }

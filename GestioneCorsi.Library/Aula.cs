@@ -10,7 +10,7 @@ namespace GestioneCorsi.Library
     {
         public int Capienza { get; set; }
         public string Nome { get; set; }
-        public List<string> Risorse { get; set; } = new List<string>();
+        public List<Risorsa> Risorse { get; set; } = new List<Risorsa>();
 
         public Aula(int capienza, string nome)
         {
@@ -18,17 +18,13 @@ namespace GestioneCorsi.Library
             Nome = nome;
         }
 
-        public void AggiungiRisorsa(string risorsa)
+        public void AggiungiRisorsa(Risorsa risorsa)
         {
-            if (!Risorse.Contains(risorsa))
-            {
-                Risorse.Add(risorsa);
-            }
+            Risorse.Add(risorsa);
         }
-
         public override string ToString()
         {
-            return $"L'aula {Nome} ha una capienza di {Capienza} persone e ha {Risorse}";
+            return $"Il nome dell'aula e' {Nome} e ha una capienza di {Capienza} persone";
         }
     }
 }
